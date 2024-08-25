@@ -1,24 +1,21 @@
 <script setup>
-  import MagicCursor from '@/components/MagicCursor.vue'
+  import DemoContainer from '@/demo/DemoContainer.vue';
+  import Demo1 from '@/demo/Demo1.vue';
+  import Demo2 from '@/demo/Demo2.vue';
+  import Demo3 from '@/demo/Demo3.vue';
 </script>
 
 <template>
-  <main>
-    <MagicCursor :hide-timing="500">
-      <template v-slot:default="{ isStopped, isHover }">
-        <div
-          :class="{
-            'cursor-box': true,
-            moving: !isStopped,
-            hover: isHover
-          }"
-        >
-        </div>
-      </template>
-      <template #follower>
-        <div class="cursor-box-child"></div>
-      </template>
-    </MagicCursor>
+  <main class="demo-page">
+    <DemoContainer class="demo">
+      <Demo1/>
+    </DemoContainer>
+    <DemoContainer class="demo">
+      <Demo2 />
+    </DemoContainer>
+    <DemoContainer class="demo">
+      <Demo3 />
+    </DemoContainer>
   </main>
 </template>
 <style lang="scss">
@@ -27,36 +24,28 @@
     padding: 0;
     font-family: 'Arial', sans-serif;
   }
-</style>
-<style lang="scss" scoped>
   main {
-    width: 100%;
-    height: 100vh;
+    height: 100%;
   }
   main,a,button,input{
-    cursor: none;
+    cursor: none !important;
   }
-  .cursor-box {
-    height: 10px;
-    width: 10px;
-    background: red;
-    position: relative;
-    z-index: 9999;
-    transition: all 0.3s;
-    border-radius: 50%;
-    &.moving {
-      background: cyan;
-    }
-    &.hover {
-      background: yellow;
-    }
-  }
-  .cursor-box-child {
-    height: 20px;
-    width: 20px;
-    background: blue;
-    position: relative;
-    z-index: 9998;
-    border-radius: 50%;
+  .demo-title {
+    font-size: 24px;
+    color: #333;
   }
 </style>
+<style lang="scss" scoped>
+  .demo-page {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    .demo {
+      margin-bottom: 20px;
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+</style>
+

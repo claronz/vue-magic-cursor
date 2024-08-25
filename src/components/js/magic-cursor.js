@@ -3,19 +3,25 @@ export default {
   props: {
     cursorVelocity: { type: Number, default: 0.3 },
     followerVelocity: { type: Number, default: 0.1 },
-    hideTiming: { type: Number, default: 1500 },
+    idleTiming: { type: Number, default: 1500 },
     showFollower: { type: Boolean, default: true },
     showCursor: { type: Boolean, default: true },
-    elementsToHover: { type: Array, default: () => ['a', 'button', 'input'] },
-    hoverThrottle: { type: Number, default: 500 }
+    // elementsToHover: { type: Array, default: () => ['a[href]', 'button:not([disabled])', 'button:not([disabled])'] },
+    elementsToHover: { type: Array, default: () => ['a', 'button:not([disabled])', 'input:not([disabled])'] },
+    hoverThrottle: { type: Number, default: 500 },
+    hoverOutWaitTime: { type: Number, default: 500 }
   },
   data () {
     return {
+      parentComponent: null,
       playing: false,
       idleTimerId: null,
+      animationId: null,
       throttleTimerId: null,
-      isStopped: false,
+      isStopped: true,
       isHover: false,
+      isDetached: true,
+      hoverOutWaitTimerId: null,
       // 
       cursorMouseX: 0,
       cursorMouseY: 0,
@@ -38,12 +44,9 @@ export default {
     },
     detectHoverHandler () {
       if (this.elementsToHover.length) {
-        const nodes = document.querySelectorAll(this.elementsToHover.join(', '));
-        // node effect on hover
+        const nodes = this.parentComponent.querySelectorAll(this.elementsToHover.join(', '));
         nodes.forEach((node) => {
-          // on mouse over set custom class
           node.addEventListener('mouseover', this.hoverEnterHandler)
-          // on mouse leave remove custom class
           node.addEventListener('mouseleave', this.hoverLeaveHandler)
         });
       }
@@ -52,9 +55,30 @@ export default {
       this.throttleTimerId = setInterval(this.detectHoverHandler, this.hoverThrottle);
     },
     attachCursor () {
-      const parentComponent = this.$parent.$el
-      parentComponent.addEventListener('mousemove', this.moveCursor)
-      requestAnimationFrame(this.render)
+      // cancel cursor detach if it is in the process of detaching
+      clearTimeout(this.hoverOutWaitTimerId)
+      // attach listener to hoverable elements
+      this.attachHoverHandler()
+      this.parentComponent.addEventListener('mousemove', this.moveCursor)
+      this.isDetached && requestAnimationFrame(this.render)
+      this.isDetached = false
+
+    },
+    detachCursor () {
+      this.hoverOutWaitTimerId = setTimeout(() => {
+        this.isDetached = true
+        clearInterval(this.throttleTimerId)
+        cancelAnimationFrame(this.animationId)
+
+        // remove event listener from hoverable elements
+        if (this.elementsToHover.length) {
+          const nodes = this.parentComponent.querySelectorAll(this.elementsToHover.join(', '));
+          nodes.forEach((node) => {
+            node.removeEventListener('mouseover', this.hoverEnterHandler)
+            node.removeEventListener('mouseleave', this.hoverLeaveHandler)
+          });
+        }
+      }, this.idleTiming);
     },
     moveCursor (e) {
       this.playing = true
@@ -82,7 +106,7 @@ export default {
     },
     hideCursor() {
       clearTimeout(this.idleTimerId)
-      this.idleTimerId = setTimeout(this.mouseStopHandler, this.hideTiming)
+      this.idleTimerId = setTimeout(this.mouseStopHandler, this.idleTiming)
     },
     mouseStopHandler() {
       this.isStopped = true
@@ -91,7 +115,6 @@ export default {
     render () {
       const cursor = this.$refs.cursor
       const follower = this.$refs.follower
-
       // if cursor enabled
       if (this.showCursor) {
         this.cursorXPos += ((this.cursorMouseX - this.cursorXPos) * this.cursorVelocity)
@@ -106,16 +129,18 @@ export default {
         follower.style.transform = 'translate3d(' + this.followerXPos + 'px,' + this.followerYPos + 'px, 0)';
       }
 
-
-
-      requestAnimationFrame(this.render);
+      this.animationId = requestAnimationFrame(this.render);
     }
   },
   mounted () {
-    this.attachCursor()
-    this.attachHoverHandler()
+    this.parentComponent = this.$parent.$el
+    this.$parent.$el.addEventListener('mouseenter', this.attachCursor)
+    this.$parent.$el.addEventListener('mouseleave', this.detachCursor)
+    window.cancelAnimation = () => {
+      cancelAnimationFrame(this.animationId)
+    }
   },
   beforeUnmount () {
-    clearInterval(this.throttleTimerId)
+    this.detachCursor()
   }
 }
