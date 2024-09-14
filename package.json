@@ -1,8 +1,21 @@
 {
   "name": "vue-magic-cursor",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "private": true,
   "type": "module",
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/magic-cursor.umd.cjs",
+  "module": "./dist/magic-cursor.js",
+  "exports": {
+    ".": {
+      "import": "./dist/magic-cursor.js",
+      "require": "./dist/magic-cursor.umd.cjs"
+    },
+    "./style.css": "./dist/style.css"
+  },
+  "exclude": ["src/App.vue", "src/main.js"],
   "scripts": {
     "dev": "vite",
     "build": "vite build",
