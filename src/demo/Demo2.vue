@@ -19,7 +19,9 @@
         </div>
       </template>
       <template #follower>
-        <div class="cursor-box-child"></div>
+        <div class="cursor-box-child">
+          custom element
+        </div>
       </template>
     </MagicCursor>
   </main>
@@ -33,24 +35,24 @@
 .cursor-box {
   height: 10px;
   width: 10px;
-  background: red;
-  position: relative;
-  z-index: 9999;
+  background: rgb(205, 255, 26);
   transition: all 0.3s;
   border-radius: 50%;
   &.moving {
-    background: cyan;
+    background: rgb(255, 196, 0);
   }
   &.hover {
     background: yellow;
   }
 }
+
 .cursor-box-child {
-  height: 20px;
-  width: 20px;
-  background: blue;
+  padding: 5px 10px;
   position: relative;
-  z-index: 9998;
-  border-radius: 50%;
+  top: 20px;
+  background: #00aaf8;
+  border-radius: 10px;
+  font-size: 12px;
+  color: white;
 }
 </style>

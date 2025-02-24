@@ -1,5 +1,9 @@
 <script setup>
   import MagicCursor from '@/components/MagicCursor.vue'
+
+  const options = {
+    elementsToHover: ['button:not([disabled])', '.hoverable']
+  }
 </script>
 
 <template>
@@ -8,10 +12,11 @@
       Hover Elements
     </div>
     <div class="button-container">
-      <button>Hoverable</button>
-      <button disabled>Disabled<span>Not hoverable</span></button>
+      <button>Button</button>
+      <button disabled>Disabled Button<span>Not hoverable</span></button>
+      <div class="hoverable">this element has hover effect</div>
     </div>
-    <MagicCursor />
+    <MagicCursor v-bind="options"/>
   </main>
 </template>
 
@@ -44,9 +49,18 @@
       display: flex;
       gap: 10px;
     }
+    .hoverable {
+      padding: 5px 10px;
+      border-radius: 5px;
+      color: #ccc;
+      // background: #00aaf8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
     button {
       &[disabled] {
-        opacity: 0.6;
+        opacity: 0.4;
       }
     }
   }
