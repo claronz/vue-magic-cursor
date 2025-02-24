@@ -1,6 +1,6 @@
 {
   "name": "vue-magic-cursor",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "private": false,
   "type": "module",
   "files": [
@@ -15,7 +15,10 @@
     },
     "./style.css": "./dist/style.css"
   },
-  "exclude": ["src/App.vue", "src/main.js"],
+  "exclude": [
+    "src/App.vue",
+    "src/main.js"
+  ],
   "scripts": {
     "dev": "vite",
     "build": "vite build",
