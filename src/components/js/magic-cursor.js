@@ -6,7 +6,6 @@ export default {
     idleTiming: { type: Number, default: 1500 },
     showFollower: { type: Boolean, default: true },
     showCursor: { type: Boolean, default: true },
-    // elementsToHover: { type: Array, default: () => ['a[href]', 'button:not([disabled])', 'button:not([disabled])'] },
     elementsToHover: { type: Array, default: () => ['a', 'button:not([disabled])', 'input:not([disabled])'] },
     hoverThrottle: { type: Number, default: 500 },
     hoverOutWaitTime: { type: Number, default: 500 }

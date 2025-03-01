@@ -1,7 +1,21 @@
 {
   "name": "vue-magic-cursor",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "private": false,
+  "license": "MIT",
+  "author": "Ronny Susanto",
+  "keywords": [
+    "frontend",
+    "vue.js",
+    "javascript",
+    "web-development",
+    "animation",
+    "custom-cursor",
+    "cursor",
+    "animated-cursor",
+    "effects",
+    "design"
+  ],
   "type": "module",
   "files": [
     "dist"
@@ -15,7 +29,10 @@
     },
     "./style.css": "./dist/style.css"
   },
-  "exclude": ["src/App.vue", "src/main.js"],
+  "exclude": [
+    "src/App.vue",
+    "src/main.js"
+  ],
   "scripts": {
     "dev": "vite",
     "build": "vite build",
