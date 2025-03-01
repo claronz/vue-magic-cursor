@@ -1,6 +1,6 @@
 {
   "name": "vue-magic-cursor",
-  "version": "0.0.2",
+  "version": "1.0.0",
   "private": false,
   "license": "MIT",
   "author": "Ronny Susanto",
@@ -10,6 +10,7 @@
     "javascript",
     "web-development",
     "animation",
+    "custom-cursor",
     "cursor",
     "animated-cursor",
     "effects",
