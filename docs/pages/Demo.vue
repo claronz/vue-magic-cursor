@@ -1,8 +1,8 @@
 <script setup>
-  import DemoContainer from '@/demo/DemoContainer.vue';
-  import Demo1 from '@/demo/Demo1.vue';
-  import Demo2 from '@/demo/Demo2.vue';
-  import Demo3 from '@/demo/Demo3.vue';
+  import DemoContainer from '@docs/components/DemoContainer.vue';
+  import Demo1 from '@docs/components/Demo1.vue';
+  import Demo2 from '@docs/components/Demo2.vue';
+  import Demo3 from '@docs/components/Demo3.vue';
 </script>
 
 <template>
