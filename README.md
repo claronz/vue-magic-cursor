@@ -1,6 +1,7 @@
 # vue-magic-cursor
 
 a customizable animated cursor for VueJS
+**[Demo Github Page](https://claronz.github.io/vue-magic-cursor/)**
 
 ## How to use
 ### Install package
