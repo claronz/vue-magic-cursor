@@ -34,13 +34,13 @@
     "src/main.js"
   ],
   "scripts": {
-    "dev": "vite --config docs/vite.config.js docs",
+    "dev": "vite --config docs-src/vite.config.js docs-src",
     "build": "vite build",
     "preview": "vite preview",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
-    "docs:dev": "vite --config docs/vite.config.js docs",
-    "docs:build": "vite build --config docs/vite.config.js docs",
-    "docs:preview": "vite preview --config docs/vite.config.js --outDir dist-docs"
+    "docs:dev": "vite --config docs-src/vite.config.js docs-src",
+    "docs:build": "vite build --config docs-src/vite.config.js docs-src",
+    "docs:preview": "vite preview --config docs-src/vite.config.js --outDir docs"
   },
   "dependencies": {
     "vue": "^3.4.29"
