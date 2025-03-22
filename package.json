@@ -34,7 +34,7 @@
     "src/main.js"
   ],
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --config docs/vite.config.js docs",
     "build": "vite build",
     "preview": "vite preview",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",

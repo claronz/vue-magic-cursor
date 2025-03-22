@@ -1,3 +1,10 @@
 import MagicCursor from "./components/MagicCursor.vue";
 
-export default MagicCursor;
+const MagicCursorPlugin = {
+  install(app) {
+    app.component('MagicCursor', MagicCursor);
+  }
+};
+
+export { MagicCursor };
+export default MagicCursorPlugin;

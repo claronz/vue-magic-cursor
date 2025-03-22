@@ -2,9 +2,12 @@
 
 #app {
   width: 100%;
-  max-width: 1280px;
-  margin: 0 auto;
   font-weight: normal;
+  cursor: none;
+}
+
+a, label, button, input,a:hover, button:hover, input:hover, input:focus {
+  cursor: none;
 }
 
 a,
