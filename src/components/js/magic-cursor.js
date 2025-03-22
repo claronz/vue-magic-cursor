@@ -1,7 +1,7 @@
 export default {
   name: 'MagicCursor',
   props: {
-    cursorVelocity: { type: Number, default: 0.3 },
+    cursorVelocity: { type: Number, default: 0.5 },
     followerVelocity: { type: Number, default: 0.1 },
     idleTiming: { type: Number, default: 1500 },
     showFollower: { type: Boolean, default: true },

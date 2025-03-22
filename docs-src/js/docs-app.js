@@ -8,7 +8,7 @@ export default {
   },
   setup() {
     // Configuration controls
-    const cursorVelocity = ref(0.3)
+    const cursorVelocity = ref(0.5)
     const followerVelocity = ref(0.1)
     const idleTiming = ref(1500)
     const showCursor = ref(true)
