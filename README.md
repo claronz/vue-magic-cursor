@@ -6,24 +6,39 @@ a customizable animated cursor for VueJS
 ### Install package
     npm install vue-magic-cursor
 
-### Import package
-    import MagicCursor from 'vue-magic-cursor'
-    import 'vue-magic-cursor/style.css' // optional feel free to add your own styling
+### Import and Setup
+You can use MagicCursor either as a plugin (globally) or as a component (locally).
 
-    export default {
-	  ...
-	  components: {
-	   MagicCursor
-	  }
-	  ...
-    }
+#### Option 1: Use as a Plugin (Global)
+```javascript
+import MagicCursor from 'vue-magic-cursor'
+import 'vue-magic-cursor/style.css' // optional feel free to add your own styling
 
-### Use as component in App.vue
-    <template>
-      <div>
-        <MagicCursor />
-      <div/>
-    <template>
+const app = createApp(App)
+app.use(MagicCursor)
+app.mount('#app')
+```
+
+#### Option 2: Use as a Component (Local)
+```javascript
+import { MagicCursor } from 'vue-magic-cursor'
+import 'vue-magic-cursor/style.css' // optional feel free to add your own styling
+
+export default {
+  components: {
+    MagicCursor
+  }
+}
+```
+
+### Use in Template
+```vue
+<template>
+  <div>
+    <MagicCursor />
+  </div>
+</template>
+```
 
 ## Configurations
 ### Custom cursor
