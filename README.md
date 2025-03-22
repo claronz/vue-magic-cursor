@@ -71,7 +71,7 @@ The `MagicCursor` component accepts the following props:
 
 | Prop Name         | Type    | Default Value | Description                                                                 |
 |-------------------|---------|---------------|-----------------------------------------------------------------------------|
-| `cursorVelocity`  | Number  | `0.3`         | The velocity of the cursor movement.                                        |
+| `cursorVelocity`  | Number  | `0.5`         | The velocity of the cursor movement.                                        |
 | `followerVelocity`| Number  | `0.1`         | The velocity of the follower movement.                                      |
 | `idleTiming`      | Number  | `1500`        | The time in milliseconds before the cursor is considered idle.              |
 | `showFollower`    | Boolean | `true`        | Whether to show the follower cursor.                                        |
